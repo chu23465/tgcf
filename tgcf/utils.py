@@ -6,7 +6,7 @@ import platform
 import re
 import sys
 from datetime import datetime
-from typing import List, TYPE_CHECKING
+from typing import TYPE_CHECKING
 
 from telethon.client import TelegramClient
 from telethon.hints import EntityLike
@@ -38,7 +38,7 @@ async def checkIfForum(
 
 async def getTopicIDs(
     channelid: int
-    ) -> List[int]:
+    ):
     topicIDs = []
     forumsList = await client(GetForumTopicsRequest(
         channelid,
