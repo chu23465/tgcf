@@ -75,7 +75,7 @@ async def forward_job(agent_id: int) -> None:
                     for d in dest:
                         
                         if (await checkIfForum(d, tm)) and topicIDs[dest.index(d)]:
-                            availableTopicIDs = getTopicIDs(d, tm)
+                            availableTopicIDs = await getTopicIDs(d, tm)
                             if topicIDs[dest.index(d)] in availableTopicIDs:
                                 tm.reply_to = topicIDs[dest.index(d)]
                                 logging.info(f"first tm.reply_to - {tm.reply_to}")
