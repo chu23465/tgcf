@@ -17,7 +17,7 @@ from tgcf import config
 from tgcf import storage as st
 from tgcf.config import CONFIG, get_SESSION, write_config
 from tgcf.plugins import apply_plugins, load_async_plugins
-from tgcf.utils import clean_session_files, send_message
+from tgcf.utils import clean_session_files, send_message, checkIfForum, getTopicIDs
 
 
 async def forward_job(agent_id: int) -> None:
