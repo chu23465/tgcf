@@ -38,7 +38,7 @@ async def checkIfForum(
 
 async def getTopicIDs(
     channelid: int
-    ):
+    ) -> List[int]:
     topicIDs = []
     forumsList = await client(GetForumTopicsRequest(
         channelid,
