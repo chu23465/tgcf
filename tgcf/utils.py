@@ -6,7 +6,7 @@ import platform
 import re
 import sys
 from datetime import datetime
-from typing import TYPE_CHECKING
+from typing import List, TYPE_CHECKING
 
 from telethon.client import TelegramClient
 from telethon.hints import EntityLike
