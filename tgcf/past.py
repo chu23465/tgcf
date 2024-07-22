@@ -78,10 +78,8 @@ async def forward_job(agent_id: int) -> None:
                             availableTopicIDs = await getTopicIDs(d, tm)
                             if topicIDs[dest.index(d)] in availableTopicIDs:
                                 tm.reply_to = topicIDs[dest.index(d)]
-                                logging.info(f"first tm.reply_to - {tm.reply_to}")
                             elif message.is_reply and r_event_uid in st.stored:
                                 tm.reply_to = st.stored.get(r_event_uid).get(d)
-                            logging.info(f"second tm.reply_to - {tm.reply_to}")
                         
                         fwded_msg = await send_message(agent_id, d, tm)
                         st.stored[event_uid].update({d: fwded_msg.id})
