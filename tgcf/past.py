@@ -83,7 +83,7 @@ async def forward_job(agent_id: int) -> None:
                                 tm.reply_to = st.stored.get(r_event_uid).get(d)
                             logging.info(f"second tm.reply_to - {tm.reply_to}")
                         
-                        fwded_msg = await send_message(agent_id, d, tm, topicID)
+                        fwded_msg = await send_message(agent_id, d, tm)
                         st.stored[event_uid].update({d: fwded_msg.id})
                     tm.clear()
                     last_id = message.id
