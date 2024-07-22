@@ -77,8 +77,8 @@ async def forward_job(agent_id: int) -> None:
                             tm.reply_to = st.stored.get(r_event_uid).get(d)
                         logging.info(f"first tm.reply_to - {tm.reply_to}")
 
-                        if (await checkIfForum(d)) and topicIDs[dest.index(d)]:
-                            availableTopicIDs = getTopicIDs(d)
+                        if (await checkIfForum(d, tm)) and topicIDs[dest.index(d)]:
+                            availableTopicIDs = getTopicIDs(d, tm)
                             if topicIDs[dest.index(d)] in availableTopicIDs:
                                 tm.reply_to = topicIDs[dest.index(d)]
                         logging.info(f"second tm.reply_to - {tm.reply_to}")
