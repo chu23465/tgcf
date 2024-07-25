@@ -30,17 +30,19 @@ def platform_info():
     \n{platform.architecture()} {platform.processor()}"""
 
 async def checkIfForum(
-    channelid: int, tm: "TgcfMessage"
+    channelid: int, 
+    client: TelegramClient
     ) -> bool:
-    client: TelegramClient = tm.client
+    
     channelEntity = await client.get_entity(channelid)
     # return should always be a bool
     return channelEntity.forum
 
 async def getTopicIDs(
-    channelid: int, tm: "TgcfMessage"
+    channelid: int, 
+    client: TelegramClient
     ) -> List[int]:
-    client: TelegramClient = tm.client
+    
     topicIDs = []
     forumsList = await client(GetForumTopicsRequest(
         channelid,

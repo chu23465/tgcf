@@ -74,12 +74,10 @@ async def forward_job(agent_id: int) -> None:
                         r_event_uid = st.EventUid(r_event)
                     for d in dest:
                         
-                        if (await checkIfForum(d, tm)) and topicIDs[dest.index(d)]:
-                            availableTopicIDs = await getTopicIDs(d, tm)
-                            if topicIDs[dest.index(d)] in availableTopicIDs:
-                                tm.reply_to = topicIDs[dest.index(d)]
-                            elif message.is_reply and r_event_uid in st.stored:
-                                tm.reply_to = st.stored.get(r_event_uid).get(d)
+                        if topicIDs[dest.index(d)]:
+                            tm.reply_to = topicIDs[dest.index(d)]
+                        elif message.is_reply and r_event_uid in st.stored:
+                            tm.reply_to = st.stored.get(r_event_uid).get(d)
                         
                         fwded_msg = await send_message(agent_id, d, tm)
                         st.stored[event_uid].update({d: fwded_msg.id})

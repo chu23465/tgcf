@@ -248,8 +248,17 @@ async def load_from_to(
         #     "dest": [], # the list of destination entities
         #     "pcfg": 0 # id of the plugin config to use
         # }
+
+        destIDs = [await _(dest) for dest in forward.dest]
+
+        for d in destIDs:
+            if forward.topicIDforEachDest != [] and forward.topicIDforEachDest[destIDs.index(d)] and (await checkIfForum(d, client)):
+                availableTopicIDs = await getTopicIDs(d, client)
+                topicIDforD = topicIDs[dest.index(d)]
+                if topicIDforD not in availableTopicIDs:
+                    raise Exception(f"Given topicID {topicIDforD} not found for given destination, {d}")
         from_to_dict[src] = {}
-        from_to_dict[src]["dest"] = [await _(dest) for dest in forward.dest]
+        from_to_dict[src]["dest"] = destIDs
         from_to_dict[src]["topicIDs"] = forward.topicIDforEachDest
         from_to_dict[src]["pcfg"] = forward.plugin_cfg
         
