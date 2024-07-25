@@ -14,7 +14,7 @@ from telethon.sessions import StringSession
 from tgcf import storage as stg
 from tgcf.const import CONFIG_FILE_NAME
 from tgcf.plugin_models import PluginConfig
-from tgcf.utils import checkIfForum, getTopicIDs
+
 
 pwd = os.getcwd()
 env_file = os.path.join(pwd, ".env")
@@ -207,6 +207,35 @@ async def load_active_forwards(agent_id: int, forwards: List[Forward]) -> List[F
     return active_forwards
 
 
+async def checkIfForum(
+    channelid: int, 
+    client: TelegramClient
+    ) -> bool:
+    
+    channelEntity = await client.get_entity(channelid)
+    # return should always be a bool
+    return channelEntity.forum
+
+async def getTopicIDs(
+    channelid: int, 
+    client: TelegramClient
+    ) -> List[int]:
+    
+    topicIDs = []
+    forumsList = await client(GetForumTopicsRequest(
+        channelid,
+        offset_date=datetime(1970, 1, 1),
+        offset_id=0,
+        offset_topic=0,
+        limit=-1,
+        q=' ')
+    )
+    #print(forumsList.stringify())
+    for topic in forumsList.topics:
+        topicIDs.append(topic.id)
+    
+    return topicIDs
+    
 async def load_from_to(
     agent_id: int,
     client: TelegramClient,
