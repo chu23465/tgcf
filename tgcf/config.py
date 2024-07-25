@@ -233,6 +233,9 @@ async def load_from_to(
     """
     from_to_dict: dict = {}
 
+    # Below line is here to avoid a circular import loop
+    from tgcf.utils import checkIfForum, getTopicIDs
+
     async def _(peer):
         return await get_id(client, peer)
 
