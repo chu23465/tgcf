@@ -5,7 +5,6 @@ import os
 import platform
 import re
 import sys
-from datetime import datetime
 from typing import List, TYPE_CHECKING
 
 from telethon.client import TelegramClient

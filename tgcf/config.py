@@ -4,12 +4,14 @@ import logging
 import os
 import sys
 from typing import Any, Dict, List, Optional, Union
+from datetime import datetime
 
 from dotenv import load_dotenv
 from pydantic import BaseModel, validator  # pylint: disable=no-name-in-module
 from pymongo import MongoClient
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from telethon.tl.custom.message import Message
 from telethon.tl.functions.channels import GetForumTopicsRequest
 
 from tgcf import storage as stg
