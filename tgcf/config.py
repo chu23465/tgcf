@@ -257,7 +257,7 @@ async def load_from_to(
                 availableTopicIDs = await getTopicIDs(d, client)
                 topicIDforD = topicIDs[dest.index(d)]
                 if topicIDforD not in availableTopicIDs:
-                    raise Exception(f"Given topicID {topicIDforD} not found for given destination, {d}")
+                    raise Exception(f"Given topicID {topicIDforD} not found for given destination, {d}\nAvailable topicIds are {availableTopicIDs}")
         from_to_dict[src] = {}
         from_to_dict[src]["dest"] = destIDs
         from_to_dict[src]["topicIDs"] = forward.topicIDforEachDest
