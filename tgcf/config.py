@@ -14,6 +14,7 @@ from telethon.sessions import StringSession
 from tgcf import storage as stg
 from tgcf.const import CONFIG_FILE_NAME
 from tgcf.plugin_models import PluginConfig
+from tgcf.utils import checkIfForum, getTopicIDs
 
 pwd = os.getcwd()
 env_file = os.path.join(pwd, ".env")
