@@ -10,6 +10,7 @@ from pydantic import BaseModel, validator  # pylint: disable=no-name-in-module
 from pymongo import MongoClient
 from telethon import TelegramClient
 from telethon.sessions import StringSession
+from telethon.tl.functions.channels import GetForumTopicsRequest
 
 from tgcf import storage as stg
 from tgcf.const import CONFIG_FILE_NAME
@@ -261,9 +262,6 @@ async def load_from_to(
     -> Storage is essential for edit, delete and reply syncs
     """
     from_to_dict: dict = {}
-
-    # Below line is here to avoid a circular import loop
-    from tgcf.utils import checkIfForum, getTopicIDs
 
     async def _(peer):
         return await get_id(client, peer)

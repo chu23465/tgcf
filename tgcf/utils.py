@@ -11,7 +11,7 @@ from typing import List, TYPE_CHECKING
 from telethon.client import TelegramClient
 from telethon.hints import EntityLike
 from telethon.tl.custom.message import Message
-from telethon.tl.functions.channels import GetFullChannelRequest, GetForumTopicsRequest
+
 
 from tgcf import __version__
 from tgcf.config import CONFIG
