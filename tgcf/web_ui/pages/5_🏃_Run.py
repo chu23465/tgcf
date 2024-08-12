@@ -77,7 +77,7 @@ if check_password(st):
                         0.0,
                         10.0,
                         value=agent_fc.past.delay,
-                        step=0.5,
+                        step=0.2,
                         key=f"delay {i}",
                     )
                 else:
