@@ -74,9 +74,10 @@ if check_password(st):
                     )
                     agent_fc.past.delay = st.slider(
                         "Delay in seconds",
-                        0.5,
-                        100.5,
+                        0,
+                        25,
                         value=agent_fc.past.delay,
+                        step=0.5
                         key=f"delay {i}",
                     )
                 else:
